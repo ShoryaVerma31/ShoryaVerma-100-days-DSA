@@ -17,13 +17,11 @@ struct Edge {
 void bellmanFord(int n, int m, struct Edge edges[], int src) {
     int dist[n];
 
-    // Step 1: Initialize distances
     for (int i = 0; i < n; i++)
         dist[i] = INT_MAX;
 
     dist[src] = 0;
 
-    // Step 2: Relax edges n-1 times
     for (int i = 1; i <= n - 1; i++) {
         for (int j = 0; j < m; j++) {
             int u = edges[j].u;
@@ -36,7 +34,6 @@ void bellmanFord(int n, int m, struct Edge edges[], int src) {
         }
     }
 
-    // Step 3: Check for negative weight cycle
     for (int j = 0; j < m; j++) {
         int u = edges[j].u;
         int v = edges[j].v;
@@ -48,7 +45,6 @@ void bellmanFord(int n, int m, struct Edge edges[], int src) {
         }
     }
 
-    // Step 4: Print distances
     printf("Vertex\tDistance from Source\n");
     for (int i = 0; i < n; i++) {
         if (dist[i] == INT_MAX)
